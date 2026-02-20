@@ -10,7 +10,7 @@ This is how I would install and use this, I haven't spent any time to package it
 
 clone the repo to wherever you want it:
 ```bash
-$ git clone 
+$ git clone https://gitea.efforting.tech/interface/draincleaner.git
 ```
 
 Make the draincleaner.py executable
