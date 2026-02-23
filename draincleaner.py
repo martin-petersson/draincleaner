@@ -154,9 +154,11 @@ def main(args):
 
 						if args.replace_all != True:
 							
-							if str(sourcepath_relative) in modified_files:	
-								shutil.copy2(item.resolve(), target, follow_symlinks=args.follow_symlinks)
-								print(item.resolve())
+							if str(sourcepath_relative) in modified_files:
+								
+								if args.dry_run != True:
+
+									shutil.copy2(item.resolve(), target, follow_symlinks=args.follow_symlinks)
 
 								if args.verbose:
 
@@ -182,7 +184,9 @@ def main(args):
 
 									print(output_copy)
 
-							shutil.copy2(item.resolve(), target, follow_symlinks=args.follow_symlinks)
+							if args.dry_run != True:
+
+								shutil.copy2(item.resolve(), target, follow_symlinks=args.follow_symlinks)
 
 
 					elif item.suffix == '.py':
@@ -201,9 +205,6 @@ def main(args):
 
 									with open(target, "w", encoding="utf-8") as f:
 										f.writelines(''.join(finalform))
-
-								else:
-									pass
 
 								if args.verbose:
 									output_writing = f'{white}Writing {item.name}  =>  {target}{reset}'
